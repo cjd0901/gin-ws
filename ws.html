@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>websocket</title>
+</head>
+<body>
+   <button onclick="send()">发送信息</button> 
+</body>
+<script>
+    let ws = new WebSocket("ws://localhost:11050/ws")
+    ws.onopen = function(event) {
+        console.log("websocket is open")
+        ws.send("hello")
+    }
+    ws.onmessage = function(event) {
+        console.log(event)
+    }
+    function send() {
+        ws.send("test")
+        console.log("send message")
+    }
+</script>
+</html>
